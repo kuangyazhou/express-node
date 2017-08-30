@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/kuangyazhou/express-node#readme",
   "dependencies": {
-    "express": "^4.15.3"
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "multer": "^1.3.0"
   }
 }
