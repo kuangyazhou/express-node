@@ -1,8 +1,15 @@
 var express = require("express");
 var app = express();
+var utility = require('utility');
 
 app.get('/', function(req, res) {
     res.send("fuck the king!!!");
+});
+
+app.get('/getMd5', function(req, res) {
+    let q = req.query.q;
+    let md5Value = utility.md5(q);
+    res.send(md5Value);
 });
 
 app.post('./', function(req, res) {
