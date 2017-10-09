@@ -22,17 +22,19 @@ app.get('/', function(req, response, next) {
                 let $e = $(e);
                 let href = url.resolve(baseUrl, $e.attr('href'));
                 items.push(href);
+                // console.log('首页爬取完成')
             });
             var ep = new eventproxy();
             ep.after('topic_html', items.length, function(item) {
-                item = item.map(function(e) {
+                item = item.map(function(e, index) {
                     var topicUrl = e[0];
                     var topicHtml = e[1];
                     var $ = cheerio.load(topicHtml);
                     return ({
                         title: $('.topic_full_title').text().trim(),
                         href: topicUrl,
-                        comment1: $('.reply_content').eq(0).text().trim()
+                        comment1: $('.reply_content').eq(0).text().trim(),
+                        index: index
                     });
                 });
                 // console.log('final');
@@ -40,6 +42,9 @@ app.get('/', function(req, response, next) {
                 data.push(item);
                 response.send(data)
             });
+            ep.after('topic_html', items.length, function(e) {
+                console.log('topic_html执行完成');
+            })
             items.forEach(function(topicUrl) {
                 superagent.get(topicUrl).end(function(err, success) {
                     // console.log('fetch', topicUrl + 'successful');
