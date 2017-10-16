@@ -7,7 +7,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/getMd5', function(req, res) {
-    let q = req.query.q;
+    let q = req.query.q || 0;
     let md5Value = utility.md5(q);
     res.send(md5Value);
 });
