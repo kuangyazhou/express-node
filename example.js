@@ -14,15 +14,15 @@ const server = http.createServer((req, res) => {
 
 
 //node 文件读取
-fs.readFile('./file/text.txt', function(Error, data) {
+fs.readFile('./src/text.txt', function(Error, data) {
     if (Error) { console.log(Error) };
     console.log('异步读取' + data, data.toString() + '\n');
 })
-fs.writeFile('./file/write.txt', '通过代码写入的内容' + new Date() + Math.random(), function(Error, data) {
+fs.writeFile('./src/write.txt', '通过代码写入的内容' + new Date() + Math.random(), function(Error, data) {
     if (Error) { return console.error(error) };
     console.log(data);
     console.log('数据写入成功');
-    fs.readFile('./file/write.txt', function(Error, data) {
+    fs.readFile('./src/write.txt', function(Error, data) {
         if (Error) { return console.error(Error) };
         console.log('读取文件' + data.toString());
     })
