@@ -23,6 +23,7 @@ app.get('/', function(req, response, next) {
                 let href = url.resolve(baseUrl, $e.attr('href'));
                 items.push(href);
                 // console.log('首页爬取完成')
+
             });
             var ep = new eventproxy();
             ep.after('topic_html', items.length, function(item) {
