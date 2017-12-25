@@ -1,7 +1,14 @@
 const http = require('http');
 const hostname = '127.0.0.1';
-const port = 3001;
+const port = process.env.PORT || 3001;
 const fs = require('fs');
+const express = require('express');
+
+const app = express();
+
+app.get('./', function(req, res) {
+    res.send('nodejs文件操作')
+})
 
 const buf1 = new Buffer('this is a test');
 console.log(buf1.toString());

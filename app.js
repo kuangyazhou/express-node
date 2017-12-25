@@ -1,6 +1,7 @@
 var express = require("express");
 var app = express();
 var utility = require('utility');
+let port = process.env.PORT || 233
 
 app.get('/', function(req, res) {
     res.send("fuck the king!!!");
@@ -24,7 +25,7 @@ app.delete('./user', function(req, res) {
     res.send('Got a DELETE request at /user');
 });
 
-var server = app.listen(2333, function() {
+var server = app.listen(port, function() {
     var host = server.address().address;
     var port = server.address().port;
 
